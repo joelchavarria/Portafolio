@@ -63,7 +63,6 @@ export const Navbar: FC = () => {
             >
               Joel Chavarría
             </div>
-            <div style={{ fontSize: 11, color: "#9ca3af" }}>DevOps 007</div>
           </div>
         </div>
 

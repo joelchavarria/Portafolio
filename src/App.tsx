@@ -28,7 +28,7 @@ function App() {
           textAlign: "center",
         }}
       >
-        © {new Date().getFullYear()} Joel Chavarría · DevOps 007 ·{" "}
+        © {new Date().getFullYear()} Joel Chavarría {" "}
         <span style={{ color: "#22c55e" }}>
           “Entrego valor, no solo commits.”
         </span>

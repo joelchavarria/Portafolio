@@ -94,8 +94,8 @@ export const Hero: FC = () => {
       >
         <div style={{ fontSize: 11, color: "#9ca3af" }}>Status</div>
         <div>
-          <div style={{ fontSize: 12, color: "#9ca3af" }}>Alias</div>
-          <div style={{ fontSize: 16, fontWeight: 600 }}>DevOps 007</div>
+          <div style={{ fontSize: 12, color: "#9ca3af" }}>Disponible</div>
+          <div style={{ fontSize: 16, fontWeight: 600 }}>Joel Chavarría</div>
         </div>
         <div style={{ fontSize: 11, color: "#9ca3af" }}>
           “Un solo shell para gobernarlos a todos.”

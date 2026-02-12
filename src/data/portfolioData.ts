@@ -13,7 +13,7 @@ export const heroData = {
 
 export const aboutData = {
   text: `
-Soy estudiante de Ingeniería en Sistemas de la Información, con experiencia
+Ingeniero en Sistemas en formación, con experiencia
 construyendo soluciones para sectores como educación, retail y servicios.
 
 He trabajado tanto en desarrollo de software (web, escritorio y móvil), como
@@ -22,7 +22,6 @@ Me interesan especialmente los proyectos donde hay impacto directo en las
 operaciones del negocio y en la vida de los usuarios finales.
 `,
   highlights: [
-    "Desarrollo de módulos de Recursos Humanos con Next.js, React y GraphQL",
     "Automatización de procesos internos con Node.js, Prisma y SQL Server",
     "Experiencia en infraestructura: Linux, Windows Server, redes y backups",
     "Integraciones con Issabel PBX, servicios web y sistemas de terceros",
@@ -58,11 +57,9 @@ export const experienceData = [
   {
     company: "TetraImpacts",
     role: "Desarrollador Full-Stack",
-    period: "Octubre 2025 — Actualidad",
+    period: "Octubre 2025 — Enero 2026",
     location: "Nicaragua · Remoto",
     bullets: [
-      "Desarrollo de módulos del Sistema de Recursos Humanos con Next.js, React, TypeScript y GraphQL.",
-      "Automatización de procesos en Gestión Organizacional, Provisión de Puesto y Administración de Recursos Humanos.",
       "Implementación de formularios complejos, carga de documentos, permisos por rol y flujos de aprobación.",
       "Integración con backend en Node.js + GraphQL y manejo de archivos vía presigned URLs (S3).",
     ],
@@ -73,7 +70,6 @@ export const experienceData = [
       "GraphQL",
       "Node.js",
       "Docker",
-      "AWS S3",
     ],
   },
   {
@@ -280,9 +276,9 @@ export const educationData = {
   year: "En curso",
   extras: [
     "Curso de Desarrollo de Apps Móviles – 2024",
-    "Fortinet Certified Fundamentals in Cybersecurity – 2023",
-    "Fortinet NSE 1 – 2024",
-    "Fortinet NSE 2 – 2024",
+    "Fortinet Certified Fundamentals in Cybersecurity – 2023-2025",
+    "Fortinet NSE 1 – 2023-2024",
+    "Fortinet NSE 2 – 2023-2024",
     "Specialist Robotics Process Automation – 2021",
   ],
 };
@@ -294,7 +290,7 @@ export const educationData = {
 export const contactData = {
   headline: "¿Hablamos de tu próximo proyecto?",
   text: `
-Busco aportar en equipos donde la tecnología se use para resolver problemas reales:
+Busco aportar en equipos donde la tecnología se use para resolver problemas:
 optimización de procesos, sistemas internos robustos y automatización.
 
 Si necesitas a alguien que se mueva bien entre desarrollo, infraestructura
