@@ -8,39 +8,75 @@ export const About: FC = () => {
       id="sobre-mi"
       kicker="Perfil"
       title="Sobre mí"
-      subtitle="Un ingeniero que disfruta tanto del backend como de la consola."
+      subtitle="Desarrollo, infraestructura y automatización en un mismo stack mental."
     >
       <div
         style={{
           display: "grid",
-          gap: 18,
-          gridTemplateColumns: "minmax(0, 1.4fr) minmax(0, 1fr)",
+          gap: 32,
+          gridTemplateColumns: "minmax(0, 1.3fr) minmax(0, 1fr)",
+          alignItems: "start",
         }}
       >
-        <p
+        {/* Texto principal */}
+        <div
           style={{
-            whiteSpace: "pre-line",
-            fontSize: 14,
+            fontSize: 15,
             color: "#e5e7eb",
+            lineHeight: 1.7,
           }}
         >
-          {aboutData.text}
-        </p>
-        <ul
+          <p style={{ whiteSpace: "pre-line", margin: 0 }}>
+            {aboutData.text}
+          </p>
+        </div>
+
+        {/* Highlights en formato “cards” */}
+        <div
           style={{
-            margin: 0,
-            paddingLeft: 16,
-            fontSize: 13,
-            color: "#9ca3af",
+            display: "grid",
+            gap: 14,
           }}
         >
           {aboutData.highlights.map((h) => (
-            <li key={h} style={{ marginBottom: 6 }}>
+            <div
+              key={h}
+              style={{
+                padding: "14px 16px",
+                borderRadius: 14,
+                background: "rgba(148,163,184,0.06)",
+                border: "1px solid rgba(148,163,184,0.15)",
+                fontSize: 13,
+                color: "#cbd5e1",
+                lineHeight: 1.5,
+                transition: "all 160ms ease",
+              }}
+            >
+              <span
+                style={{
+                  color: "#22c55e",
+                  fontWeight: 700,
+                  marginRight: 6,
+                }}
+              >
+                ▹
+              </span>
               {h}
-            </li>
+            </div>
           ))}
-        </ul>
+        </div>
       </div>
+
+      {/* Responsive inline */}
+      <style>
+        {`
+          @media (max-width: 860px) {
+            #sobre-mi > div > div {
+              grid-template-columns: 1fr !important;
+            }
+          }
+        `}
+      </style>
     </Section>
   );
 };

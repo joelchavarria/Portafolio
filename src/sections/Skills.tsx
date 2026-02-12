@@ -20,83 +20,141 @@ import {
 } from "react-icons/si";
 import { FaLinux, FaDocker, FaAws, FaJava, FaDatabase } from "react-icons/fa";
 
-export const Skills: FC = () => {
-  const iconsMap: Record<string, ReactElement> = {
-    // Core
-    "TypeScript": <SiTypescript size={16} color="#3178C6" />,
-    "React": <SiReact size={16} color="#61DAFB" />,
-    "Next.js": <SiNextdotjs size={16} />,
-    "Node.js": <SiNodedotjs size={16} color="#3C873A" />,
-    "GraphQL": <SiGraphql size={16} color="#E10098" />,
-    "MongoDB": <SiMongodb size={16} color="#4DB33D" />,
-    "Firebase": <SiFirebase size={16} color="#FFA000" />,
-    "C#": <SiSharp size={16} color="#178600" />,
-    "Java": <FaJava size={16} color="#f89820" />,
-    "SQL Server": <FaDatabase size={16} color="#CC2927" />,
+type IconMap = Partial<Record<string, ReactElement>>;
 
-    // DevOps
-    "Linux": <FaLinux size={16} />,
-    "Docker": <FaDocker size={16} />,
-    "Nginx": <SiNginx size={16} color="#009639" />,
-    "AWS S3": <FaAws size={16} color="#FF9900" />,
-    "Railway": <SiRailway size={16} />,
-    "Git": <SiGit size={16} color="#F05032" />,
-    "GitHub": <SiGithub size={16} />,
+export const Skills: FC = () => {
+  const iconStyle: React.CSSProperties = {
+    display: "inline-flex",
+    alignItems: "center",
+    justifyContent: "center",
+    marginRight: 8,
+    opacity: 0.95,
   };
 
-  const renderSkillTag = (skill: string) => (
-    <Tag key={skill}>
-      {iconsMap[skill] && (
-        <span style={{ display: "inline-flex", marginRight: 6 }}>
-          {iconsMap[skill]}
-        </span>
-      )}
-      {skill}
-    </Tag>
-  );
+  const iconsMap: IconMap = {
+    // Core
+    TypeScript: <SiTypescript size={16} />,
+    React: <SiReact size={16} />,
+    "Next.js": <SiNextdotjs size={16} />,
+    "Node.js": <SiNodedotjs size={16} />,
+    GraphQL: <SiGraphql size={16} />,
+    MongoDB: <SiMongodb size={16} />,
+    Firebase: <SiFirebase size={16} />,
+    "C#": <SiSharp size={16} />,
+    Java: <FaJava size={16} />,
+    "SQL Server": <FaDatabase size={16} />,
+
+    // DevOps
+    Linux: <FaLinux size={16} />,
+    Docker: <FaDocker size={16} />,
+    Nginx: <SiNginx size={16} />,
+    "AWS S3": <FaAws size={16} />,
+    Railway: <SiRailway size={16} />,
+    Git: <SiGit size={16} />,
+    GitHub: <SiGithub size={16} />,
+  };
+
+  const renderSkillTag = (skill: string) => {
+    const icon = iconsMap[skill];
+
+    return (
+      <Tag key={skill}>
+        {icon ? <span style={iconStyle}>{icon}</span> : null}
+        {skill}
+      </Tag>
+    );
+  };
 
   return (
     <Section
       id="skills"
       kicker="Skills"
       title="Stack y focos"
-      subtitle="Tecnologías y habilidades utilizadas en desarrollo, DevOps e integraciones."
+      subtitle="Tecnologías y habilidades aplicadas en desarrollo, infraestructura y automatización."
     >
-      <div className="card-grid">
-        {/* CORE STACK */}
-        <article className="card">
-          <h3 className="card-title">Core Stack</h3>
-          <div className="tag-row">
-            {skillsData.core.map((skill) => renderSkillTag(skill))}
-          </div>
-        </article>
-
-        {/* INFRA / DEVOPS */}
-        <article className="card">
-          <h3 className="card-title">Infraestructura & DevOps</h3>
-          <div className="tag-row">
-            {skillsData.devops.map((skill) => renderSkillTag(skill))}
-          </div>
-        </article>
-
-        {/* PLATAFORMAS */}
-        <article className="card">
-          <h3 className="card-title">Plataformas & Herramientas</h3>
-          <div className="tag-row">
-            {skillsData.tools.map((skill) => renderSkillTag(skill))}
-          </div>
-        </article>
-
-        {/* SOFT SKILLS */}
-        <article className="card">
-          <h3 className="card-title">Habilidades Blandas</h3>
-          <div className="tag-row">
-            {skillsData.soft.map((skill) => (
-              <Tag key={skill}>{skill}</Tag>
-            ))}
-          </div>
-        </article>
+      <div
+        className="card-grid"
+        style={{
+          display: "grid",
+          gap: 16,
+          gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+        }}
+      >
+        <SkillCard title="Core Stack" items={skillsData.core} renderItem={renderSkillTag} />
+        <SkillCard
+          title="Infraestructura & DevOps"
+          items={skillsData.devops}
+          renderItem={renderSkillTag}
+        />
+        <SkillCard
+          title="Plataformas & Herramientas"
+          items={skillsData.tools}
+          renderItem={renderSkillTag}
+        />
+        <SkillCard
+          title="Habilidades Blandas"
+          items={skillsData.soft}
+          renderItem={(skill) => <Tag key={skill}>{skill}</Tag>}
+        />
       </div>
+
+      <style>
+        {`
+          @media (max-width: 860px) {
+            #skills .card-grid {
+              grid-template-columns: 1fr !important;
+            }
+          }
+        `}
+      </style>
     </Section>
+  );
+};
+
+interface SkillCardProps {
+  title: string;
+  items: string[];
+  renderItem: (skill: string) => ReactElement;
+}
+
+const SkillCard: FC<SkillCardProps> = ({ title, items, renderItem }) => {
+  return (
+    <article
+      className="card"
+      style={{
+        borderRadius: 20,
+        background: "rgba(15,23,42,0.9)",
+        border: "1px solid rgba(148,163,184,0.15)",
+        boxShadow: "0 18px 45px rgba(0,0,0,0.45)",
+        padding: 18,
+        display: "grid",
+        gap: 12,
+      }}
+    >
+      <h3
+        className="card-title"
+        style={{
+          margin: 0,
+          fontSize: 13,
+          textTransform: "uppercase",
+          letterSpacing: 1.2,
+          color: "#a5b4fc",
+          fontWeight: 900,
+        }}
+      >
+        {title}
+      </h3>
+
+      <div
+        className="tag-row"
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          gap: 8,
+        }}
+      >
+        {items.map((skill) => renderItem(skill))}
+      </div>
+    </article>
   );
 };
