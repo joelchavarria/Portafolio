@@ -4,9 +4,9 @@ export const heroData = {
   name: "Joel Antonio Chavarría García",
   role:
     "Desarrollador de software · Infraestructura · Automatización y microservicios",
-  punchline: "Entrego valor, no solo commits.",
+  punchline: "",
   summary:
-    "Ingeniero en sistemas con foco en desarrollo de aplicaciones, automatización de procesos e infraestructura. Me muevo bien entre backend, DevOps y soporte a usuarios finales para resolver problemas de negocio reales.",
+    "Ing. en Sistemas en formación con experiencia profesional en infraestructura tecnológica y desarrollo de software. He participado en la implementación y administración de redes empresariales, firewalls Fortinet, servidores Windows y Linux, así como en el desarrollo de aplicaciones web utilizando tecnologías modernas como React y TypeScript. Me enfoco en aportar soluciones seguras, eficientes y orientadas a resultados dentro de entornos productivos.",
   ctaPrimary: "Ver proyectos",
   ctaSecondary: "Descargar CV",
 };
@@ -277,8 +277,8 @@ export const educationData = {
   extras: [
     "Curso de Desarrollo de Apps Móviles – 2024",
     "Fortinet Certified Fundamentals in Cybersecurity – 2023-2025",
-    "Fortinet NSE 1 – 2023-2024",
-    "Fortinet NSE 2 – 2023-2024",
+    "Fortinet NSE 1 – 2023-2025",
+    "Fortinet NSE 2 – 2023-2025",
     "Specialist Robotics Process Automation – 2021",
   ],
 };

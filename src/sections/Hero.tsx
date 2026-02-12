@@ -14,10 +14,6 @@ export const Hero: FC = () => {
       }}
     >
       <div>
-        <div className="chip">
-          <span className="chip-dot" />
-          Disponible para roles de desarrollo y DevOps.
-        </div>
         <h1
           style={{
             margin: "18px 0 4px",
@@ -75,32 +71,18 @@ export const Hero: FC = () => {
         </div>
       </div>
 
-      <div
-        style={{
-          justifySelf: "center",
-          width: 220,
-          height: 220,
-          borderRadius: "30px",
-          border: "1px solid rgba(148,163,184,0.4)",
-          background:
-            "radial-gradient(circle at 20% 0%, #22c55e 0, rgba(15,23,42,1) 55%, #020617 100%)",
-          position: "relative",
-          boxShadow: "0 25px 60px rgba(0,0,0,0.7)",
-          padding: 18,
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "space-between",
-        }}
-      >
-        <div style={{ fontSize: 11, color: "#9ca3af" }}>Status</div>
+     
+      
+        {/* <div style={{ fontSize: 11, color: "#9ca3af" }}>Status</div>
         <div>
           <div style={{ fontSize: 12, color: "#9ca3af" }}>Disponible</div>
           <div style={{ fontSize: 16, fontWeight: 600 }}>Joel Chavarría</div>
         </div>
         <div style={{ fontSize: 11, color: "#9ca3af" }}>
           “Un solo shell para gobernarlos a todos.”
-        </div>
-      </div>
+        </div> */}
+    
+
     </section>
   );
 };

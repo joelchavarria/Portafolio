@@ -29,9 +29,7 @@ function App() {
         }}
       >
         © {new Date().getFullYear()} Joel Chavarría {" "}
-        <span style={{ color: "#22c55e" }}>
-          “Entrego valor, no solo commits.”
-        </span>
+       
         <div style={{ marginTop: 6 }}>
           <a
             href="https://www.linkedin.com/in/joel-chavarria-89422819a"
