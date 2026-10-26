@@ -1,76 +1,65 @@
-import type { FC, FormEvent } from "react";
+import type { FC, FormEvent, ReactNode } from "react";
 import { useState } from "react";
 import { Section } from "../components/Section";
-import { contactData } from "../data/portfolioData";
+import { buildWhatsAppUrl, contactData } from "../data/portfolioData";
+
+const DEFAULT_WHATSAPP_MESSAGE =
+  "Hola Joel, vi tu portafolio y me gustaría conversar contigo.";
 
 export const Contact: FC = () => {
-  const [loading, setLoading] = useState<boolean>(false);
-  const [success, setSuccess] = useState<boolean>(false);
+  const [status, setStatus] = useState<string>("");
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setLoading(true);
-    setSuccess(false);
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
 
-    // Simulación profesional (mientras no tengas backend)
-    await new Promise((res) => setTimeout(res, 900));
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    const name = String(formData.get("name") ?? "").trim();
+    const email = String(formData.get("email") ?? "").trim();
+    const message = String(formData.get("message") ?? "").trim();
 
-    setLoading(false);
-    setSuccess(true);
+    const whatsappMessage = [
+      "Hola Joel, te contacto desde tu portafolio.",
+      `Nombre: ${name}`,
+      `Correo: ${email}`,
+      "",
+      "Mensaje:",
+      message,
+    ].join("\n");
+
+    window.open(buildWhatsAppUrl(whatsappMessage), "_blank", "noopener,noreferrer");
+    form.reset();
+    setStatus("WhatsApp se abrió con tu mensaje listo para revisar y enviar.");
   };
 
   return (
     <Section
       id="contacto"
       kicker="Contacto"
-      title="Contacto"
+      title="Hablemos"
       subtitle="Si hay match entre lo que necesitas y lo que sé hacer, conversemos."
     >
-      <div
-        style={{
-          display: "grid",
-          gap: 28,
-          gridTemplateColumns: "minmax(0, 1.2fr) minmax(0, 1fr)",
-          alignItems: "start",
-        }}
-      >
-        {/* Info lateral */}
+      <div className="contact-layout">
         <div>
-          <h3 style={{ fontSize: 16, marginTop: 0 }}>
-            {contactData.headline}
-          </h3>
+          <h3 className="contact-heading">{contactData.headline}</h3>
 
-          <p
-            style={{
-              whiteSpace: "pre-line",
-              fontSize: 14,
-              color: "#94a3b8",
-              lineHeight: 1.6,
-            }}
-          >
-            {contactData.text}
-          </p>
+          <p className="contact-copy">{contactData.text}</p>
 
-          <div
-            style={{
-              marginTop: 18,
-              fontSize: 13,
-              display: "grid",
-              gap: 6,
-            }}
-          >
+          <div className="contact-details">
             <div>
               <strong>Email:</strong>{" "}
-              <a
-                href={`mailto:${contactData.email}`}
-                style={{ color: "#38bdf8", textDecoration: "none" }}
-              >
-                {contactData.email}
-              </a>
+              <a href={`mailto:${contactData.email}`}>{contactData.email}</a>
             </div>
 
             <div>
-              <strong>Teléfono:</strong> {contactData.phone}
+              <strong>WhatsApp:</strong>{" "}
+              <a
+                href={buildWhatsAppUrl(DEFAULT_WHATSAPP_MESSAGE)}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {contactData.phone}
+              </a>
             </div>
 
             <div>
@@ -79,120 +68,59 @@ export const Contact: FC = () => {
 
             <div>
               <strong>LinkedIn:</strong>{" "}
-              <a
-                href={contactData.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ color: "#38bdf8", textDecoration: "none" }}
-              >
-                Ver perfil →
+              <a href={contactData.linkedin} target="_blank" rel="noopener noreferrer">
+                Ver perfil
               </a>
             </div>
           </div>
         </div>
 
-        {/* Formulario */}
-        <form
-          onSubmit={handleSubmit}
-          style={{
-            background: "rgba(15,23,42,0.9)",
-            borderRadius: 20,
-            padding: 20,
-            border: "1px solid rgba(148,163,184,0.15)",
-            boxShadow: "0 20px 50px rgba(0,0,0,0.55)",
-            display: "grid",
-            gap: 14,
-          }}
-        >
-          <Field label="Nombre">
-            <input required type="text" />
+        <form className="contact-form" onSubmit={handleSubmit}>
+          <Field id="contact-name" label="Nombre">
+            <input id="contact-name" name="name" required autoComplete="name" />
           </Field>
 
-          <Field label="Email">
-            <input required type="email" />
+          <Field id="contact-email" label="Correo electrónico">
+            <input
+              id="contact-email"
+              name="email"
+              required
+              type="email"
+              autoComplete="email"
+            />
           </Field>
 
-          <Field label="Mensaje">
-            <textarea required rows={4} />
+          <Field id="contact-message" label="Mensaje">
+            <textarea id="contact-message" name="message" required rows={5} />
           </Field>
 
-          <button
-            type="submit"
-            disabled={loading}
-            style={{
-              marginTop: 6,
-              padding: "10px 14px",
-              borderRadius: 12,
-              border: "1px solid rgba(34,197,94,0.5)",
-              background: loading
-                ? "rgba(34,197,94,0.5)"
-                : "rgba(34,197,94,0.9)",
-              color: "#0b1220",
-              fontWeight: 800,
-              fontSize: 13,
-              cursor: loading ? "not-allowed" : "pointer",
-              transition: "all 160ms ease",
-            }}
-          >
-            {loading ? "Enviando..." : "Enviar mensaje"}
+          <button className="contact-submit" type="submit">
+            Continuar en WhatsApp
           </button>
 
-          {success && (
-            <div
-              style={{
-                marginTop: 6,
-                fontSize: 13,
-                color: "#22c55e",
-              }}
-            >
-              ✓ Mensaje enviado correctamente. Te responderé pronto.
-            </div>
-          )}
+          <p className="contact-privacy">
+            El sitio no almacena tus datos. Al continuar se abrirá WhatsApp con el mensaje listo
+            para enviar.
+          </p>
+
+          <p className="contact-status" aria-live="polite">
+            {status}
+          </p>
         </form>
       </div>
-
-      <style>
-        {`
-          form input,
-          form textarea {
-            width: 100%;
-            padding: 10px 12px;
-            border-radius: 12px;
-            border: 1px solid rgba(148,163,184,0.15);
-            background: #020617;
-            color: #e5e7eb;
-            font-size: 13px;
-            transition: border 140ms ease, box-shadow 140ms ease;
-          }
-
-          form input:focus,
-          form textarea:focus {
-            outline: none;
-            border-color: #22c55e;
-            box-shadow: 0 0 0 2px rgba(34,197,94,0.25);
-          }
-
-          @media (max-width: 860px) {
-            #contacto > div {
-              grid-template-columns: 1fr !important;
-            }
-          }
-        `}
-      </style>
     </Section>
   );
 };
 
 interface FieldProps {
+  id: string;
   label: string;
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
-const Field: FC<FieldProps> = ({ label, children }) => {
-  return (
-    <div style={{ display: "grid", gap: 4 }}>
-      <label style={{ fontSize: 12, fontWeight: 600 }}>{label}</label>
-      {children}
-    </div>
-  );
-};
+const Field: FC<FieldProps> = ({ id, label, children }) => (
+  <div className="contact-field">
+    <label htmlFor={id}>{label}</label>
+    {children}
+  </div>
+);

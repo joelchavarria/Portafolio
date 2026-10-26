@@ -59,7 +59,11 @@ export const Skills: FC = () => {
 
     return (
       <Tag key={skill}>
-        {icon ? <span style={iconStyle}>{icon}</span> : null}
+        {icon ? (
+          <span aria-hidden="true" style={iconStyle}>
+            {icon}
+          </span>
+        ) : null}
         {skill}
       </Tag>
     );

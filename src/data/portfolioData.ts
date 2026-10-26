@@ -24,7 +24,7 @@ export const heroData = {
   summary:
     "Ingeniero en Sistemas en formación con experiencia profesional en desarrollo de software e infraestructura empresarial. He participado en la administración de redes, firewalls Fortinet, servidores Windows/Linux y en el desarrollo de aplicaciones web con React y TypeScript. Enfocado en entregar soluciones seguras, eficientes y orientadas a resultados en entornos productivos.",
   ctaPrimary: "Ver proyectos",
-  ctaSecondary: "Descargar CV",
+  ctaSecondary: "Contactar por WhatsApp",
 };
 
 export const aboutData = {
@@ -128,7 +128,7 @@ export const projectsData: ProjectItem[] = [
     description:
       "Plataforma de monitoreo para cadena de farmacias (sucursales + call center) que visualiza el ciclo completo de las órdenes: facturación, armado, despacho y entrega.",
     impact:
-      "Visibilidad operativa en tiempo_toggle real, identificación de cuellos de botella y mejora del cumplimiento de tiempos de entrega.",
+      "Visibilidad operativa en tiempo real, identificación de cuellos de botella y mejora del cumplimiento de tiempos de entrega.",
     stack: [
       "React",
       "TypeScript",
@@ -276,8 +276,12 @@ optimización de procesos, automatización y sistemas internos robustos.
 Si necesitas a alguien que se mueva con soltura entre desarrollo, infraestructura
 y operación, podemos conversar.
 `,
-  email: "joelchavarria308@gmail.com",
+  email: "joel.chavarria@devtester.lat",
   phone: "+505 8995 3348",
+  whatsappNumber: "50589953348",
   location: "Granada, Nicaragua · UTC-6",
   linkedin: "https://www.linkedin.com/in/joel-chavarria-89422819a",
 };
+
+export const buildWhatsAppUrl = (message: string) =>
+  `https://wa.me/${contactData.whatsappNumber}?text=${encodeURIComponent(message)}`;

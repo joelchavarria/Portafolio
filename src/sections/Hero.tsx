@@ -1,20 +1,12 @@
 import type { FC } from "react";
-import { heroData } from "../data/portfolioData";
+import { buildWhatsAppUrl, heroData } from "../data/portfolioData";
 
 export const Hero: FC = () => {
   return (
-    <section
-      id="inicio"
-      style={{
-        display: "grid",
-        gridTemplateColumns: "minmax(0, 1.3fr) minmax(0, 1fr)",
-        gap: 24,
-        alignItems: "center",
-        marginBottom: 56,
-      }}
-    >
-      <div>
+    <section id="inicio" className="hero" aria-labelledby="hero-title">
+      <div className="hero-content">
         <h1
+          id="hero-title"
           style={{
             margin: "18px 0 4px",
             fontSize: 30,
@@ -57,7 +49,12 @@ export const Hero: FC = () => {
           <a href="#proyectos" className="btn">
             {heroData.ctaPrimary}
           </a>
-          <a href="#contacto" className="btn btn-outline">
+          <a
+            href={buildWhatsAppUrl("Hola Joel, vi tu portafolio y me gustaría conversar contigo.")}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-outline"
+          >
             {heroData.ctaSecondary}
           </a>
           <a
@@ -70,7 +67,6 @@ export const Hero: FC = () => {
           </a>
         </div>
       </div>
-
     </section>
   );
 };

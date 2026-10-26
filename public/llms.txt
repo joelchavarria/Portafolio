@@ -1,0 +1,12 @@
+# Portafolio de Joel Chavarría
+
+> Portafolio profesional de un ingeniero de software enfocado en desarrollo, infraestructura y automatización.
+
+## Información principal
+
+- [Portafolio](https://portafolio-jchavarria.vercel.app/): experiencia, proyectos y tecnologías.
+- [Contacto](https://portafolio-jchavarria.vercel.app/#contacto): correo y enlace directo a WhatsApp.
+
+## Perfil
+
+Joel Chavarría trabaja con React, TypeScript, Node.js, SQL Server, Docker, Linux, Fortinet y automatización de procesos empresariales.

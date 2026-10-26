@@ -21,7 +21,7 @@ export const Tag: FC<TagProps> = ({ children, icon }) => {
         border: "1px solid rgba(148,163,184,0.18)",
         color: "#e5e7eb",
         backdropFilter: "blur(6px)",
-        transition: "all 140ms ease",
+        transition: "transform 140ms ease, border-color 140ms ease",
         whiteSpace: "nowrap",
       }}
     >

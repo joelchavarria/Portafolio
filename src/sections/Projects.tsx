@@ -1,7 +1,7 @@
 import type { FC } from "react";
 import { Section } from "../components/Section";
 import { Tag } from "../components/Tag";
-import { projectsData } from "../data/portfolioData";
+import { buildWhatsAppUrl, projectsData } from "../data/portfolioData";
 
 export const Projects: FC = () => {
   return (
@@ -111,23 +111,27 @@ export const Projects: FC = () => {
                 ))}
               </div>
 
-              {p.link ? (
-                <div style={{ marginTop: 2 }}>
-                  <a
-                    href={p.link}
-                    target="_blank"
-                    rel="noreferrer"
-                    style={{
-                      fontSize: 12,
-                      color: "#38bdf8",
-                      textDecoration: "none",
-                      fontWeight: 700,
-                    }}
-                  >
-                    Ver más →
-                  </a>
-                </div>
-              ) : null}
+              <div style={{ marginTop: 2 }}>
+                <a
+                  href={
+                    p.link ||
+                    buildWhatsAppUrl(
+                      `Hola Joel, me gustaría conocer más sobre el proyecto: ${p.name}.`
+                    )
+                  }
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    fontSize: 12,
+                    color: "#7dd3fc",
+                    textDecoration: "underline",
+                    textUnderlineOffset: 3,
+                    fontWeight: 700,
+                  }}
+                >
+                  {p.link ? "Ver proyecto" : "Solicitar caso de estudio"} →
+                </a>
+              </div>
             </div>
           </article>
         ))}

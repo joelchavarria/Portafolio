@@ -44,12 +44,12 @@ export const About: FC = () => {
               style={{
                 padding: "14px 16px",
                 borderRadius: 14,
-                background: "rgba(148,163,184,0.06)",
-                border: "1px solid rgba(148,163,184,0.15)",
-                fontSize: 13,
-                color: "#cbd5e1",
+                background: "#0f172a",
+                border: "1px solid rgba(148,163,184,0.28)",
+                fontSize: 14,
+                color: "#e2e8f0",
                 lineHeight: 1.5,
-                transition: "all 160ms ease",
+                transition: "transform 160ms ease, border-color 160ms ease",
               }}
             >
               <span
